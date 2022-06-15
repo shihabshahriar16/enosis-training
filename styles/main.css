@@ -1,0 +1,117 @@
+#form-container {
+    margin: 10%;
+    padding: 5%;
+    border: 2px solid black;
+}
+legend {
+    display: block;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: wheat;
+    width: 90%;
+    margin:5%;
+}
+
+th {
+    border: 2px solid white;
+    padding: 4px;
+    background-color: black;
+    color:white
+}
+
+td {
+    border: 2px solid white;
+    padding: 4px;
+
+}
+
+
+th {
+    cursor: pointer;
+}
+
+th:hover {
+    background: teal
+}
+
+label {
+    display: inline-block;
+    min-width: 20%
+}
+
+#name, #address, #rating, #picture{
+    display: inline-block;
+    min-width: 250px;
+    border:2px ridge;
+    border-radius:5px;
+}
+
+.form-field {
+    margin:4%
+}
+
+#table-container{
+    display:none;
+    margin:5%;
+    padding:5%;
+}
+.form-submit-reset{
+    margin-left: 60%;
+}
+
+#backToTable{
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    margin:2%;
+    margin-left: 70%;
+}
+
+#row-id{
+    display: none;
+}
+
+.redButton {
+    background-color:red;
+    border-color: white;
+    width: 80px;
+    height: 35px;
+    margin:2%;
+}
+
+.greenButton {
+    background-color: greenyellow;
+    border-color: white;
+    width: 80px;
+    height: 35px;
+    margin:2%;
+}
+
+#search-container{
+    margin:5%;
+}
+#search-container>label{
+    display: inline-block;
+    min-width: 20%;
+}
+#search-container>input{
+    display: inline-block;
+    min-width: 200px;
+    min-height: 20px;
+    outline: none;
+    border: 2px solid;
+}
+#search-container>input:focus{
+    border: 2px solid teal;
+}
+
+#createNew{
+    background-color: blue;
+    border-color: white;
+    color: white;
+    margin-left: 5%;
+    height: 35px;
+}
