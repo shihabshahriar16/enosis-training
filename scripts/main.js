@@ -1,5 +1,3 @@
-
-
 addPlaceForm.addEventListener("submit", handleRow)
 
 let touristPlacesIndex = {};
@@ -8,7 +6,7 @@ function handleRow(e) {
     e.preventDefault();
     const data = new FormData(addPlaceForm);
     addPlaceForm.reset()
-    let table = document.getElementById("touristPlaceGrid");
+    let table = document.getElementById("touristPlaceGrid").getElementsByTagName('tbody')[0];
     let id,trow;
 
     if(data.get('row-id')!=0){
@@ -24,7 +22,6 @@ function handleRow(e) {
     touristPlacesIndex[id] = Object.fromEntries(data);
     
     let objectURL = window.URL.createObjectURL(data.get("picture"));
-    console.log(objectURL)
     trow.innerHTML = `<td>${data.get("name")}</td>
                         <td>${data.get("address")}</td>
                         <td>${data.get("rating")}</td>
@@ -33,10 +30,9 @@ function handleRow(e) {
                             <button class="redButton" type="button" onclick="deleteRow(event)">Delete</button>
                             <button class="greenButton" type="button" onclick="updateRow(event)" value="${id}">Update</button>
                         </td>`
-    for (const [name, value] of data) {
-        console.log(`name ${name} value ${value}`)
-    }
+
     touristPlacesHTML = Array.from(touristPlaceGrid.tBodies[0].rows)
+    
     document.getElementById("tableRating").className = "not-sorted";
     document.getElementById("form-container").style.display = "none";
     document.getElementById("table-container").style.display = "block";
@@ -44,6 +40,9 @@ function handleRow(e) {
 
 function deleteRow(event) {
     let trow = event.target.closest("tr");
+    
+    delete touristPlacesIndex[trow.id]
+    touristPlacesHTML.filter(item => item!=trow)
     trow.remove();
 }
 
@@ -54,7 +53,7 @@ function updateRow(event) {
     placeForm.elements["name"].value = formValues["name"];
     placeForm.elements["address"].value = formValues["address"];
     placeForm.elements["rating"].value = formValues["rating"];
-    console.log("value: "+ event.target.value)
+
     document.getElementById("table-container").style.display = "none";
     document.getElementById("form-container").style.display = "block";
 }
@@ -74,9 +73,8 @@ touristPlaceGrid.onclick = function(e) {
     if (e.target.tagName != 'TH' || e.target.getAttribute("id")!= "tableRating") return;
     let thsort = e.target.getAttribute("classname");
     let thIndex = e.target.cellIndex;
-    
     let sortedRows = Array.from(touristPlaceGrid.tBodies[0].rows);
-    console.log(touristPlaceGrid.tBodies[0].rows)
+
     if(thsort=="not-sorted"){
         sortedRows = sortedRows.sort((rowA, rowB) => rowA.cells[thIndex].innerHTML.localeCompare(rowB.cells[thIndex].innerHTML))
         e.target.setAttribute("classname","sorted-asc");
@@ -104,8 +102,6 @@ function autocompleteMatch(input) {
           return term;
         }
     });
-    console.log(searchRows)
     touristPlaceGrid.tBodies[0].innerHTML="";
-    console.log(touristPlaceGrid.tBodies[0].children)
     touristPlaceGrid.tBodies[0].append(...searchRows);
   }
