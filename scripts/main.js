@@ -42,7 +42,7 @@ function deleteRow(event) {
     let trow = event.target.closest("tr");
     
     delete touristPlacesIndex[trow.id]
-    touristPlacesHTML.filter(item => item!=trow)
+    touristPlacesHTML = touristPlacesHTML.filter(item => item!=trow)
     trow.remove();
 }
 
