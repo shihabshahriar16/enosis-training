@@ -1,25 +1,36 @@
-#form-container {
-    margin: 10%;
-    padding: 5%;
-    border: 2px solid black;
+body {
+    margin: 0;
+    padding: 0;
 }
-legend {
-    display: block;
-    text-align: center;
+
+#table-container{
+    display:none;
+    margin:1%;
+    padding:1%;
 }
+
+
+#row-id{
+    display: none;
+}
+
 
 table {
     border-collapse: collapse;
-    background-color: wheat;
-    width: 90%;
-    margin:5%;
+    background-color: #efd4bb;
+    width: 100%;
 }
 
 th {
     border: 2px solid white;
     padding: 4px;
     background-color: black;
-    color:white
+    color:white;
+    cursor: pointer;
+}
+
+th:hover {
+    background: teal
 }
 
 td {
@@ -28,90 +39,117 @@ td {
 
 }
 
-
-th {
-    cursor: pointer;
+#table-buttons {
+    vertical-align: middle;
+    text-align: right;
 }
 
-th:hover {
-    background: teal
+#search-container {
+    margin:5px;
 }
 
-label {
-    display: inline-block;
-    min-width: 20%
-}
-
-#name, #address, #rating, #picture{
-    display: inline-block;
-    min-width: 250px;
-    border:2px ridge;
-    border-radius:5px;
-}
-
-.form-field {
-    margin:4%
-}
-
-#table-container{
-    display:none;
-    margin:5%;
-    padding:5%;
-}
-.form-submit-reset{
-    margin-left: 60%;
-}
-
-#backToTable{
-    text-decoration: underline;
-    cursor: pointer;
-    color: blue;
-    margin:2%;
-    margin-left: 70%;
-}
-
-#row-id{
-    display: none;
-}
-
-.redButton {
-    background-color:red;
-    border-color: white;
-    width: 80px;
-    height: 35px;
-    margin:2%;
-}
-
-.greenButton {
-    background-color: greenyellow;
-    border-color: white;
-    width: 80px;
-    height: 35px;
-    margin:2%;
-}
-
-#search-container{
-    margin:5%;
-}
 #search-container>label{
     display: inline-block;
     min-width: 20%;
+    font-size: 1.2em;
 }
 #search-container>input{
     display: inline-block;
-    min-width: 200px;
-    min-height: 20px;
+    min-width: 300px;
+    min-height: 30px;
     outline: none;
-    border: 2px solid;
+    border-radius:4px;
+    border: 1px solid #d1d1d1;
 }
 #search-container>input:focus{
-    border: 2px solid teal;
+    border: 1px solid teal;
 }
 
 #createNew{
     background-color: blue;
     border-color: white;
     color: white;
-    margin-left: 5%;
     height: 35px;
+    margin-top:1%;
+
 }
+
+label {
+    display: inline-block;
+    min-width: 25%
+}
+
+legend {
+    margin: 1%;
+    padding: 1%;
+    font-size: 1.2em;
+}
+
+#form-container {
+    margin: 1%;
+    padding: 1%;
+    border: 2px solid black;
+}
+legend {
+    display: block;
+    text-align: center;
+}
+
+
+#name, #address, #rating, #picture{
+    display: inline-block;
+    height: 30px;
+    width: 280px;
+    border:1px solid #d1d1d1;
+    border-radius:4px;
+}
+
+#picture{
+    width: 285px;
+}
+
+#previewImg {
+    display: none;
+    margin-top:1%;
+    margin-left: 30%;
+    height: 90px;
+    width: 120px;
+
+}
+
+.form-field {
+    margin:5px;
+}
+
+
+.form-submit-reset{
+    display: flex;
+    justify-content: end;
+}
+
+#backToTable{
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    margin-left: 80%;
+    display: flex;
+    justify-content: end;
+}
+
+
+.redButton {
+    background-color:#ed611c;
+    border-color: white;
+    width: 80px;
+    height: 35px;
+    margin:0.5%;
+}
+
+.greenButton {
+    background-color: #4db051;
+    border-color: white;
+    width: 80px;
+    height: 35px;
+    margin:0.5%;
+}
+
