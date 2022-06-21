@@ -11,15 +11,20 @@
     <div id="form-container">
         <form id="addPlaceForm" enctype="multipart/form-data">
             <legend><h3>Add a new Tourist place</h3></legend>
-            <input type="number" id="row-id" name="row-id" value="0">
+            <input type="number" id="row-id" name="row-id" value="-1">
             <div class="form-field"><label for="name">Name:</label>
             <input type="text" id="name" name="name" required></div>
             <div class="form-field"><label for="address">Address:</label>
             <input type="text" id="address" name="address" required></div>
             <div class="form-field"><label for="rating">Rating:</label>
             <input type="number" id="rating" name="rating" min="0" max="10" required></div>
-            <div class="form-field"><label for="picture">Picture:</label>
-            <input type="file" id="picture" name="picture"></div>
+            <div class="form-field">
+                <label for="picture">Picture:</label>
+                <input type="file" id="picture" name="picture" accept="image/*">
+            </div>
+            <div>
+                <img id="previewImg" src="#" alt="your image" />
+            </div>
             <div class="form-submit-reset">
                 <input class="redButton" type="reset" value="Reset">
                 <input class="greenButton" type="submit" value="Submit">
