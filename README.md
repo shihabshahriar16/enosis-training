@@ -17,6 +17,6 @@ The following items need to be implemented after designing the grid -
 
 ### Given Images:
 
-![Form View](../master/layouts/FormView.PNG?raw=true)
+<img src="layouts/FormView.PNG" alt="Form View" width="320">
 
-![Grid View](../master/layouts/GridView.PNG?raw=true)
+<img src="layouts/GridView.PNG" alt="Grid View" width="320">
