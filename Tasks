@@ -1,0 +1,43 @@
+Pre-requisites:
+1. Create a new schema named spring_test in your local mysql server
+2. Use the create.sql file inside resources folder to create the tables
+
+Description of the packages:
+1. We are only concerned about the training package
+2. the "entity" package should consist all the jpa entities equivalent to our tables
+3. the "info" package should consist relevant classes on how we want to send as response
+2. the "dao" package should consist all necessary dao classes
+3. the "service" package should consist all the service classes.
+all db manipulation or low level logics should be in service classes
+4. the "delegate" package should consist all the delegate classes.
+any high level logic should be here including the param validation
+5. We have a MainController class which takes care of all the routings
+
+What is already implemented:
+1. We have all the entity and info classes setup for Student table
+2. We have the following routes already setup
+- /demo/all -> returns all student info available in db
+- /demo/add-student -> to add a new student entry
+- /demo/update-student -> to update a existing student entry (will cause error if the student Id is not valid)
+
+What we need to do:
+1. Build entity and info classes for other tables with necessary annotations
+- The STUDENT_RESULT_MAPPING table should be a property of the student and subject entity with proper annotations (onetoMany/manytoone)
+- We should tinker with the lazy and eager fetching mechanism of the related entities
+
+2. We need to implement the following routes with help from the already existing ones
+GET /demo/all-subject -> get all subject information
+POST /demo/add-subject -> to add a new subject
+PUT /demo/update-subject -> to update an existing subject
+POST /demo/assign-subject -> assign a subject to a student (use student id and subject id)
+POST /demo/add-result -> add result for individual student for a subject
+PUT /demo/update-result -> update result for a student
+GET /demo/get-all-info -> takes student name as parameter and return all information including results
+GET /demo/get-info-subject -> takes student name as parameter and return the subjects which the student is assigned to
+DELETE /demo/delete-student -> delete a student entry and should clean up result mapping and student subject mapping table
+DELETE /demo/delete-subject -> delete a subject entry and should clean up result mapping and student subject mapping table
+GET /demo/calculate-gpa -> takes student id as parameter, fetches all results and returns grades for each subject (can build a new info class or add a grade property to the result mapping info class)
+GET /demo/calculate-cgpa -> takes student id as parameter and calculates the CGPA for that student
+GET /demo/result-table -> no input parameter, returns the top 3 list of students with their CGPA
+
+3. make sure we play with jpa methods, write jpql as well as write native queries in the DAO classes
