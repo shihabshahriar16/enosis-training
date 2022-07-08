@@ -15,6 +15,11 @@ public class StudentServiceImpl implements StudentService{
     @Inject
     StudentDAO studentDAO;
 
+    @Override
+    public Student findById(String id) {
+        return studentDAO.findById(id);
+    }
+
     public List<Student> getAll() {
         return studentDAO.findAll();
     }

@@ -1,13 +1,17 @@
 package com.example.training.info;
 
+import com.example.training.entity.StudentSubjectMapping;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class StudentInfo implements Serializable {
     private String id;
     private String firstName;
     private String lastName;
     private String address;
-
+    private List<StudentSubjectMapping> subjects;
     public String getId() {
         return id;
     }
@@ -38,5 +42,13 @@ public class StudentInfo implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<StudentSubjectMapping> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<StudentSubjectMapping> subjects) {
+        this.subjects = subjects;
     }
 }

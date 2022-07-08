@@ -11,7 +11,7 @@ Description of the packages:
 all db manipulation or low level logics should be in service classes
 4. the "delegate" package should consist all the delegate classes.
 any high level logic should be here including the param validation
-5. We have a MainController class which takes care of all the routings
+5. We have a MainController class which takes care of all the routines
 
 What is already implemented:
 1. We have all the entity and info classes setup for Student table
@@ -22,7 +22,6 @@ What is already implemented:
 
 What we need to do:
 1. Build entity and info classes for other tables with necessary annotations
-- The STUDENT_RESULT_MAPPING table should be a property of the student and subject entity with proper annotations (onetoMany/manytoone)
 - We should tinker with the lazy and eager fetching mechanism of the related entities
 
 2. We need to implement the following routes with help from the already existing ones

@@ -6,6 +6,8 @@ import javax.transaction.SystemException;
 import java.util.List;
 
 public interface StudentService {
+
+    Student findById(String id);
     List<Student> getAll();
 
     Student addNewStudent(String firstName, String lastName, String address);
