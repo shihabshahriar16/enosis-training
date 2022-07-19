@@ -29,4 +29,9 @@ public class SubjectDelegateImpl extends AbstractDelegate implements SubjectDele
     public SubjectInfo updateSubject(String subjectId, String subjectTitle) throws SystemException, IOException {
         return convert(subjectService.updateSubject(subjectId, subjectTitle), SubjectInfo.class);
     }
+
+    @Override
+    public void deleteSubject(String subjectId) {
+        subjectService.deleteSubject(subjectId);
+    }
 }

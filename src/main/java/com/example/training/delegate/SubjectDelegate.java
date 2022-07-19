@@ -12,4 +12,6 @@ public interface SubjectDelegate {
     SubjectInfo addNewSubject(String subjectTitle) throws IOException;
 
     SubjectInfo updateSubject(String subjectId, String subjectTitle) throws SystemException, IOException;
+
+    void deleteSubject(String subjectId);
 }

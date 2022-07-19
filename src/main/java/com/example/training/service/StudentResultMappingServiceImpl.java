@@ -30,7 +30,7 @@ public class StudentResultMappingServiceImpl implements StudentResultMappingServ
     @Transactional
     public StudentResultMapping addNewStudentResultMapping(String studentId,String subjectId, int score) throws SystemException {
         StudentSubjectMapping studentSubjectMapping = studentSubjectMappingService.findByStudentAndSubject(studentId,subjectId).get(0);
-        StudentResultMapping studentResultMapping = studentResultMappingDAO.findByStudentSubjectMapping(studentSubjectMapping).get(0);
+        StudentResultMapping studentResultMapping = studentResultMappingDAO.findByStudentSubjectMapping(studentSubjectMapping);
         if (studentResultMapping != null) {
             throw new SystemException("Student Result Mapping Already Present");
         }

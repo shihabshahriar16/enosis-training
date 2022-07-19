@@ -7,20 +7,12 @@ import com.example.training.delegate.SubjectDelegate;
 import com.example.training.entity.Student;
 import com.example.training.entity.StudentResultMapping;
 import com.example.training.entity.StudentSubjectMapping;
-import com.example.training.info.StudentInfo;
-import com.example.training.info.StudentResultMappingInfo;
-import com.example.training.info.StudentSubjectMappingInfo;
-import com.example.training.info.SubjectInfo;
+import com.example.training.info.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
 import java.io.IOException;
@@ -64,10 +56,31 @@ public class MainController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping(path="/delete-student")
+    public @ResponseBody
+    ResponseEntity<Boolean> deleteStudent (@RequestParam String studentId) throws IOException {
+        studentDelegate.deleteStudent(studentId);
+        return ResponseEntity.ok(true);
+    }
+
     @GetMapping(path="/all")
     public @ResponseBody
-    ResponseEntity<List<StudentInfo>> getAll() throws IOException {
-        List<StudentInfo> result = studentDelegate.getAll();
+    ResponseEntity<List<Student>> getAll() throws IOException {
+        List<Student> result = studentDelegate.getAll();
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(path="/get-all-info")
+    public @ResponseBody
+    ResponseEntity<StudentInfo> getAllInfo(@RequestParam String studentId) throws IOException {
+        StudentInfo result = studentDelegate.getById(studentId);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(path="/get-info-subject")
+    public @ResponseBody
+    ResponseEntity<StudentInfo> getInfoSubject(@RequestParam String studentId) throws IOException {
+        StudentInfo result = studentDelegate.getById(studentId);
         return ResponseEntity.ok(result);
     }
 
@@ -98,6 +111,13 @@ public class MainController {
         }
 
         return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping(path="/delete-subject")
+    public @ResponseBody
+    ResponseEntity<Boolean> deleteSubject (@RequestParam String subjectId) throws IOException {
+        subjectDelegate.deleteSubject(subjectId);
+        return ResponseEntity.ok(true);
     }
 
     @PostMapping(path="/assign-subject")
@@ -131,5 +151,25 @@ public class MainController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping(path="/calculate-gpa")
+    public @ResponseBody
+    ResponseEntity<List<StudentResultMappingInfo>> calculateGpa(@RequestParam String studentId) throws IOException {
+        List<StudentResultMappingInfo> result = studentDelegate.getGPA(studentId);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(path="/calculate-cgpa")
+    public @ResponseBody
+    ResponseEntity<Double> calculateCgpa(@RequestParam String studentId) throws IOException {
+        Double result = studentDelegate.getCGPA(studentId);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(path="/result-table")
+    public @ResponseBody
+    ResponseEntity<List<StudentCgpaInfo>> getCGPAList() throws IOException {
+        List<StudentCgpaInfo> result = studentDelegate.getCGPAList();
+        return ResponseEntity.ok(result);
+    }
 
 }

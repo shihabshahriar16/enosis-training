@@ -1,7 +1,6 @@
 package com.example.training.info;
 
 import com.example.training.entity.StudentSubjectMapping;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
 import java.util.List;

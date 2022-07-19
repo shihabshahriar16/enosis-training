@@ -13,4 +13,5 @@ public interface StudentService {
     Student addNewStudent(String firstName, String lastName, String address);
 
     Student updateStudent(String studentId, String firstName, String lastName, String address) throws SystemException;
+    void deleteStudent(String studentId);
 }

@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface StudentResultMappingDAO extends JpaRepository<StudentResultMapping, String>, JpaSpecificationExecutor<StudentResultMapping> {
-    List<StudentResultMapping> findByStudentSubjectMapping(StudentSubjectMapping studentSubjectMapping);
+    StudentResultMapping findByStudentSubjectMapping(StudentSubjectMapping studentSubjectMapping);
 }

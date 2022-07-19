@@ -2,11 +2,14 @@ package com.example.training.service;
 
 import com.example.training.dao.StudentDAO;
 import com.example.training.entity.Student;
+import org.hibernate.Hibernate;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.inject.Inject;
 import javax.transaction.SystemException;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -17,11 +20,17 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student findById(String id) {
-        return studentDAO.findById(id);
+        Student student = studentDAO.findById(id);
+        // if(!Hibernate.isInitialized(student.getSubjects())){
+        //     Hibernate.initialize(student.getSubjects());
+        // }
+        return student;
     }
 
+    @Transactional
     public List<Student> getAll() {
-        return studentDAO.findAll();
+        List<Student> studentList = studentDAO.findAll();
+        return studentList;
     }
 
     @Override
@@ -54,5 +63,11 @@ public class StudentServiceImpl implements StudentService{
         }
 
         return studentDAO.saveAndFlush(student);
+    }
+
+    @Override
+    public void deleteStudent(String studentId) {
+        studentDAO.delete(studentId);
+        studentDAO.flush();
     }
 }

@@ -14,7 +14,7 @@ public class StudentSubjectMapping extends AbstractPersistable implements Serial
 
     @ManyToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     @JoinColumn(
             name = "studentId",

@@ -46,4 +46,10 @@ public class SubjectServiceImpl implements SubjectService{
 
         return subjectDAO.saveAndFlush(subject);
     }
+
+    @Override
+    public void deleteSubject(String subjectId) {
+        subjectDAO.delete(subjectId);
+        subjectDAO.flush();
+    }
 }

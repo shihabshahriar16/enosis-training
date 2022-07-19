@@ -14,4 +14,6 @@ public interface SubjectService {
     Subject addNewSubject(String subjectTitle);
 
     Subject updateSubject(String subjectId, String subjectTitle) throws SystemException;
+
+    void deleteSubject(String subjectId);
 }
